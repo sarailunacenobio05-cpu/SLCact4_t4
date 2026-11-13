@@ -1,0 +1,15 @@
+[Unit]
+Description=Act4 API REST (Spring Boot + JWT)
+After=network.target mysql.service
+
+[Service]
+User=TU_USUARIO
+WorkingDirectory=/home/TU_USUARIO/act4_t4
+EnvironmentFile=/home/TU_USUARIO/act4_t4/act4_t4.env
+ExecStart=/usr/bin/java -jar /home/TU_USUARIO/act4_t4/slcact4_t4-0.0.1-SNAPSHOT.jar
+SuccessExitStatus=143
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

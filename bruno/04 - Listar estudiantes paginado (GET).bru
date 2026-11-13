@@ -1,0 +1,25 @@
+meta {
+  name: 04 - Listar estudiantes paginado (GET)
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{baseUrl}}/api/v1/students?page=0&size=5
+  body: none
+  auth: bearer
+}
+
+params:query {
+  page: 0
+  size: 5
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+assert {
+  res.status: eq 200
+  res.body.content: isArray
+}

@@ -1,0 +1,28 @@
+meta {
+  name: 06 - Actualizar estudiante (PUT)
+  type: http
+  seq: 6
+}
+
+put {
+  url: {{baseUrl}}/api/v1/students/{{studentId}}
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "firstName": "Ana Maria",
+    "lastName": "Lopez Garcia",
+    "email": "ana.lopez@gmail.com"
+  }
+}
+
+assert {
+  res.status: eq 200
+  res.body.firstName: eq Ana Maria
+}
